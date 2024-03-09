@@ -3,8 +3,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
-import { login } from "../../../actions/auth";
-import { LoginFormData, LoginSchema } from "../../../schemas";
+import { login } from "../../actions/auth";
+import { LoginFormData, LoginSchema } from "../../schemas";
 import { Button } from "../ui/button";
 import CardWrapper from "../ui/card-wrapper";
 import {
