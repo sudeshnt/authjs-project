@@ -24,18 +24,6 @@ export const {
 
       return true;
     },
-    async session({ token, session }) {
-      console.log("🚀 ~ session ~ token:", token);
-      if (token.sub && session.user) {
-        session.user.id = token.sub;
-      }
-
-      if (token.role && session.user) {
-        session.user.role = token.role as UserRole;
-      }
-
-      return session;
-    },
     async jwt({ token }) {
       if (!token.sub) return token;
 
@@ -48,6 +36,19 @@ export const {
       token.role = existingUser.role;
 
       return token;
+    },
+    async session({ token, session }) {
+      // token passed from the jwt callback
+      console.log("🚀 ~ session ~ token:", token);
+      if (token.sub && session.user) {
+        session.user.id = token.sub;
+      }
+
+      if (token.role && session.user) {
+        session.user.role = token.role as UserRole;
+      }
+
+      return session;
     },
   },
   ...authConfig,
